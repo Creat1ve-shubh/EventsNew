@@ -1,5 +1,4 @@
 "use client";
-import { Tilt } from 'react-tilt'
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import dayjs from "dayjs";
@@ -75,7 +74,6 @@ const EventTracker = () => {
   if (!nextEvent) return <p className="text-center text-gray-500">No upcoming events</p>;
 
   return (
-    <Tilt options={defaultOptions}>
     <motion.div
       className="mx-[30vh] mt-10 px-18 py-24 text-white rounded-2xl shadow-lg border border-gray-700 relative overflow-hidden"
       initial={{ opacity: 0, y: -20 }}
@@ -105,7 +103,6 @@ const EventTracker = () => {
         <p className="mt-2 text-4xl text-center text-red-400">Countdown: {countdown.hours}h {countdown.minutes}m {countdown.seconds}s</p>
       </div>
     </motion.div>
-    </Tilt>
   );
 };
 
