@@ -4,32 +4,20 @@ import { motion } from "framer-motion";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import Image from "next/image";
-import { surfer } from "../assets/index"
+import { surfer } from "../assets/index";
 import "../lib/style.css";
 dayjs.extend(relativeTime);
 
 interface Event {
   id: number;
   title: string;
-  date: string; // ISO format
+  date: string;
   description: string;
   image?: string;
 }
 
-const defaultOptions = {
-	reverse:        false,  // reverse the tilt direction
-	max:            35,     // max tilt rotation (degrees)
-	perspective:    1000,   // Transform perspective, the lower the more extreme the tilt gets.
-	scale:          1.1,    // 2 = 200%, 1.5 = 150%, etc..
-	speed:          1000,   // Speed of the enter/exit transition
-	transition:     true,   // Set a transition on enter/exit.
-	axis:           null,   // What axis should be disabled. Can be X or Y.
-	reset:          true,    // If the tilt effect has to be reset on exit.
-	easing:         "cubic-bezier(.03,.98,.52,.99)",    // Easing on enter/exit.
-}
-
 const events: Event[] = [
-  { id: 1, title: "Hackathon", date: "2025-02-10T10:00:00Z", description: "A 24-hour coding challenge.", image: surfer  },
+  { id: 1, title: "Hackathon", date: "2025-02-10T10:00:00Z", description: "A 24-hour coding challenge.", image: "/images/hackathon.jpg" },
   { id: 2, title: "AI Workshop", date: "2025-02-15T14:00:00Z", description: "Learn the latest in AI development.", image: "/images/ai-workshop.jpg" },
   { id: 3, title: "Cybersecurity Meetup", date: "2025-02-20T18:00:00Z", description: "Discussion on the latest threats and defenses.", image: "/images/cybersecurity.jpg" },
 ];
@@ -76,7 +64,7 @@ const EventTracker = () => {
 
   return (
     <motion.div
-      className="mx-[30vh] mt-10 px-18 py-24 text-white rounded-2xl shadow-lg  shadow-[#C084FC] border border-gray-700 relative overflow-hidden"
+      className="mx-auto mt-10 px-6 py-8 sm:px-8 sm:py-12 md:px-12 md:py-16 lg:px-16 lg:py-20 text-white rounded-2xl shadow-lg shadow-[#C084FC] border border-gray-700 relative overflow-hidden max-w-3xl w-[90%]"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 4.0 }}
@@ -87,21 +75,20 @@ const EventTracker = () => {
           alt={nextEvent.title} 
           layout="fill"
           objectFit="cover"
-          className="absolute inset-0 w-full h-full opacity-50"
+          className="absolute inset-0 w-full h-full opacity-50 rounded-2xl"
         />
       )}
-      <div className="relative bg-opacity-60 p-6 rounded-2xl">
-        <h2 className="text-3xl text-center font-bold font-montserrat text-teal-400">Upcoming Event</h2>
+      <div className="relative bg-opacity-60 p-4 sm:p-6 rounded-2xl">
+        <h2 className="text-2xl sm:text-3xl text-center font-bold font-montserrat text-white">Upcoming Event</h2>
         <motion.p 
-          className="text-7xl text-center font-gloock mt-2 bg-gradient-to-r from-teal-300 via-white to-teal-300 bg-clip-text text-transparent"
+          className="text-4xl sm:text-6xl md:text-7xl text-center font-gloock mt-2 bg-gradient-to-r from-teal-300 via-white to-teal-300 bg-clip-text text-transparent"
           animate={{ backgroundPosition: ["0%", "200%", "0%"] }}
           transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
         >
           {nextEvent.title}
         </motion.p>
-        <p className="text-xl text-center font-instrument-sans text-gray-400 mt-1">{nextEvent.description}</p>
-        <p className="mt-4 text-3xl text-center font-montserrat text-teal-300">{timeLeft}</p>
-        <p className="mt-2 text-4xl text-center font-inclusive-sans text-red-400">Countdown: {countdown.hours}h {countdown.minutes}m {countdown.seconds}s</p>
+        <p className="text-lg sm:text-xl text-center font-instrument-sans text-purple-400 mt-1">{nextEvent.description}</p>
+        <p className="mt-2 text-2xl sm:text-3xl md:text-4xl text-center font-inclusive-sans bg-gradient-to-r from-red-400 to-pink-300 bg-clip-text text-transparent">Starting in: {countdown.hours}h {countdown.minutes}m {countdown.seconds}s</p>
       </div>
     </motion.div>
   );

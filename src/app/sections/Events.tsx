@@ -5,8 +5,10 @@ import "../lib/style.css";
 export function TimelineDemo() {
   const data = [
     {
+      
       title: "2024",
       content: (
+        
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xl md:text-wrap font-instrument-sans mb-8">
             Built and launched Aceternity UI and Aceternity UI Pro from scratch

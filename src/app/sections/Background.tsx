@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { LampContainer } from "../components/Vortex";
+import "../lib/style.css";
 
 export function LampDemo() {
   return (
@@ -14,11 +15,11 @@ export function LampDemo() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="text-5xl md:text-6xl gloock tracking-[-0.64px]"
+        className="text-5xl md:text-6xl font-gloock tracking-wide text-center"
       >
-        Disover{" "}
+        Discover{" "}
         <span
-          className="font-black text-6xl montserrat text-center tracking-[-4.48px]"
+          className="font-black text-6xl montserrat text-center inline -tracking-normal"
           style={{
             textShadow: "0px 4px 25.3px #cacaca66",
             background:
