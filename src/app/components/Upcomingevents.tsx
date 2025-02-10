@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import Image from "next/image";
 import { surfer } from "../assets/index"
+import "../lib/style.css";
 dayjs.extend(relativeTime);
 
 interface Event {
@@ -75,10 +76,10 @@ const EventTracker = () => {
 
   return (
     <motion.div
-      className="mx-[30vh] mt-10 px-18 py-24 text-white rounded-2xl shadow-lg border border-gray-700 relative overflow-hidden"
+      className="mx-[30vh] mt-10 px-18 py-24 text-white rounded-2xl shadow-lg  shadow-[#C084FC] border border-gray-700 relative overflow-hidden"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 4.0 }}
     >
       {nextEvent.image && (
         <Image 
@@ -90,17 +91,17 @@ const EventTracker = () => {
         />
       )}
       <div className="relative bg-opacity-60 p-6 rounded-2xl">
-        <h2 className="text-3xl text-center font-bold text-teal-400">Upcoming Event</h2>
+        <h2 className="text-3xl text-center font-bold font-montserrat text-teal-400">Upcoming Event</h2>
         <motion.p 
-          className="text-7xl text-center font-semibold mt-2 bg-gradient-to-r from-teal-300 via-white to-teal-300 bg-clip-text text-transparent"
+          className="text-7xl text-center font-gloock mt-2 bg-gradient-to-r from-teal-300 via-white to-teal-300 bg-clip-text text-transparent"
           animate={{ backgroundPosition: ["0%", "200%", "0%"] }}
           transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
         >
           {nextEvent.title}
         </motion.p>
-        <p className="text-xl text-center text-gray-400 mt-1">{nextEvent.description}</p>
-        <p className="mt-4 text-3xl text-center text-teal-300">{timeLeft}</p>
-        <p className="mt-2 text-4xl text-center text-red-400">Countdown: {countdown.hours}h {countdown.minutes}m {countdown.seconds}s</p>
+        <p className="text-xl text-center font-instrument-sans text-gray-400 mt-1">{nextEvent.description}</p>
+        <p className="mt-4 text-3xl text-center font-montserrat text-teal-300">{timeLeft}</p>
+        <p className="mt-2 text-4xl text-center font-inclusive-sans text-red-400">Countdown: {countdown.hours}h {countdown.minutes}m {countdown.seconds}s</p>
       </div>
     </motion.div>
   );

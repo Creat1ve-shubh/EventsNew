@@ -1,23 +1,36 @@
+"use client";
 import React from "react";
-import { Vortex } from "../components/Vortex";
+import { motion } from "framer-motion";
+import { LampContainer } from "../components/Vortex";
 
-  
-export function VortexDemo() {
+export function LampDemo() {
   return (
-    <div className="w-full mx-auto rounded-md  h-[70rem] overflow-hidden">
-      <Vortex
-        backgroundColor="black"
-        className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
+    <LampContainer>
+      <motion.h1
+        initial={{ opacity: 0.5, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.3,
+          duration: 0.8,
+          ease: "easeInOut",
+        }}
+        className="text-5xl md:text-6xl gloock tracking-[-0.64px]"
       >
-        
-        <h1 className="text-white text-7xl text-center font-serif">
-    Discover <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg"> Onerios 25 Events</span>
-  </h1>
-        
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
-    
-        </div>
-      </Vortex>
-    </div>
+        Disover{" "}
+        <span
+          className="font-black text-6xl montserrat text-center tracking-[-4.48px]"
+          style={{
+            textShadow: "0px 4px 25.3px #cacaca66",
+            background:
+              "linear-gradient(180deg, rgb(255, 184.88, 239.81) 0%, rgb(99.42, 52.33, 209.31) 100%)",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            color: "transparent",
+          }}
+        >
+          Oneiros Events
+        </span>
+      </motion.h1>
+    </LampContainer>
   );
 }

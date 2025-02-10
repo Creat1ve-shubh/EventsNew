@@ -6,6 +6,8 @@ import {
   motion,
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+import "../lib/style.css";
+import { TypeAnimation } from 'react-type-animation';
 import { FlipWords } from "../components/flip-text";
 
 
@@ -42,14 +44,25 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       className="w-full bg-white dark:bg-neutral-950 font-sans md:px-10"
       ref={containerRef}
     >
-     <div className=" flex justify-center items-center mt-[15vh] font-serif px-4">
-           <div className="text-6xl mx-auto font-normal text-white">
-             Buckle Up! For 
-             <FlipWords words={words} /> 
-            
-           </div>
+     <div className=" flex justify-center text-4xl items-center mt-[15vh] font-montserrat font-bold px-4">
+     <TypeAnimation
+  sequence={[
+    // Same substring at the start will only be typed once, initially
+    'Buckle up for Singing',
+    1000,
+    'Buckle up for Dance',
+    1000,
+    'Buckle up for Concert',
+    1000,
+    'Buckle up for DJ Night',
+    1000,
+  ]}
+  speed={50}
+  style={{ fontSize: '2em' }}
+  repeat={Infinity}
+/>
          </div> 
-
+        
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (
           <div
