@@ -1,17 +1,14 @@
 "use client";
 import {
-  useMotionValueEvent,
   useScroll,
   useTransform,
   motion,
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import "../lib/style.css";
-import { TypeAnimation } from 'react-type-animation';
-import { FlipWords } from "../components/flip-text";
+import { TypeAnimation } from 'react-type-animation'
 
 
-const words = ["Dance", "Singing", "Concert", "DJ Night", "Comedy Show"];
 
 
 interface TimelineEntry {

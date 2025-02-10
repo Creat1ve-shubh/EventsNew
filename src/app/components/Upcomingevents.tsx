@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import Image from "next/image";
-import { surfer } from "../assets/index";
 import "../lib/style.css";
 dayjs.extend(relativeTime);
 
@@ -24,7 +23,6 @@ const events: Event[] = [
 
 const EventTracker = () => {
   const [nextEvent, setNextEvent] = useState<Event | null>(null);
-  const [timeLeft, setTimeLeft] = useState<string>("");
   const [countdown, setCountdown] = useState<{ hours: number; minutes: number; seconds: number }>({ hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
@@ -49,14 +47,13 @@ const EventTracker = () => {
     const diff = eventTime.diff(now, "second");
     
     if (diff > 0) {
-      setTimeLeft(dayjs(eventDate).fromNow());
       setCountdown({
         hours: Math.floor(diff / 3600),
         minutes: Math.floor((diff % 3600) / 60),
         seconds: diff % 60,
       });
     } else {
-      setTimeLeft("Happening now!");
+      setCountdown({ hours: 0, minutes: 0, seconds: 0 });
     }
   };
 
